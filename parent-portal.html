@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Parents - GROUPE SCOLAIRE GENERATION ELITES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset  base  */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url(images/ge\ elites\ \(2\).png);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+        }
+
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.616);
+            z-index: -1;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, #0a2053 0%, rgba(44, 107, 184, 0.95) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0);
+            padding: 5px;
+        }
+
+        .school-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .school-motto {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Header Right Section */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* User Info */
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Portal Navigation */
+        .portal-nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .portal-nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .portal-title {
+            color: #1a4a8f;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .portal-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .portal-menu a {
+            color: #1a4a8f;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .portal-menu a:hover, .portal-menu a.active {
+            background: #1a4a8f;
+            color: white;
+        }
+
+        /* Portal Content */
+        .portal-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, #0a2053, #2c6bb8);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        /* 2x2 */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card {
+            background: #ffffff9d;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.356);
+            border: 1px solid rgba(255, 255, 255, 0.582);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0a2053, #2c6bb8);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .card-title {
+            color: #1a4a8f;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* LIZONFON */
+        .children-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .child-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #2c6bb8;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .child-name {
+            color: #1a4a8f;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .child-info {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Grades */
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .grades-table th,
+        .grades-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .grades-table th {
+            background: #f8f9fa;
+            color: #1a4a8f;
+            font-weight: 600;
+        }
+
+        .grade-excellent { color: #28a745; font-weight: bold; }
+        .grade-good { color: #17a2b8; }
+        .grade-average { color: #ffc107; }
+        .grade-poor { color: #dc3545; }
+
+        /* Events Style */
+        .event-item {
+            padding: 1rem;
+            border-left: 4px solid #28a745;
+            background: #f8f9fa;
+            margin-bottom: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .event-item.warning {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+
+        .event-item.info {
+            border-left-color: #17a2b8;
+            background: #e3f2fd;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2053, #2c6bb8);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: transparent;
+            padding: 0;
+            margin-top: 5px;
+        }
+
+        .footer-logo-container h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .footer-logo-container p {
+            color: #ccc;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .portal-nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .portal-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .children-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-logo-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .footer-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="images/ge elites (2).png" alt="GROUPE SCOLAIRE GENERATION ELITES" class="school-logo">
+                <div>
+                    <h1 class="school-name">GROUPE SCOLAIRE GÉNÉRATION ÉLITES</h1>
+                    <p class="school-motto">Former les leaders de demain</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>Parent - M. Benali</span>
+                </div>
+                <a href="login.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portal Navigation -->
+    <nav class="portal-nav">
+        <div class="portal-nav-content">
+            <div class="portal-title">Espace Parents</div>
+            <div class="portal-menu">
+                <a href="#dashboard" class="active">Tableau de Bord</a>
+                <a href="#children">Mes Enfants</a>
+                <a href="#grades">Notes</a>
+                <a href="#attendance">Absences</a>
+                <a href="#messages">Messages</a>
+                <a href="#calendar">Calendrier</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Portal Content -->
+    <main class="portal-content">
+        <!-- Welcome Banner -->
+        <section class="welcome-banner">
+            <h2>Bienvenue dans votre espace personnel</h2>
+            <p>Consultez le suivi scolaire de vos enfants en temps réel</p>
+        </section>
+
+        <!-- 2x2 Dashboard -->
+        <section class="dashboard-grid">
+            <!-- Mes Enfants Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">Mes Enfants</h3>
+                </div>
+                <div class="children-list">
+                    <div class="child-card">
+                        <div class="child-name">Karim Benali</div>
+                        <div class="child-info">CM2 - Classe de M. Dubois</div>
+                        <div class="child-info">Moyenne générale: 15.5/20</div>
+                    </div>
+                    <div class="child-card">
+                        <div class="child-name">Sarah Benali</div>
+                        <div class="child-info">4ème - Classe de Mme. Martin</div>
+                        <div class="child-info">Moyenne générale: 16.2/20</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dernières Notes Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Dernières Notes</h3>
+                </div>
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Matière</th>
+                            <th>Note</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mathématiques</td>
+                            <td class="grade-excellent">17/20</td>
+                            <td>15/03/2024</td>
+                        </tr>
+                        <tr>
+                            <td>Français</td>
+                            <td class="grade-good">15/20</td>
+                            <td>12/03/2024</td>
+                        </tr>
+                        <tr>
+                            <td>Sciences</td>
+                            <td class="grade-excellent">18/20</td>
+                            <td>10/03/2024</td>
+                        </tr>
+                        <tr>
+                            <td>Anglais</td>
+                            <td class="grade-average">13/20</td>
+                            <td>08/03/2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Messages Récents Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="card-title">Messages Récents</h3>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <div style="padding: 1rem; background: #e3f2fd; border-radius: 8px; margin-bottom: 1rem;">
+                        <strong>M. Dubois (Professeur principal)</strong><br>
+                        <small>Progression excellente en mathématiques</small><br>
+                        <small style="color: #666;">14/03/2024</small>
+                    </div>
+                    <div style="padding: 1rem; background: #fff3cd; border-radius: 8px;">
+                        <strong>Administration</strong><br>
+                        <small>Rappel: Paiement des frais scolaires</small><br>
+                        <small style="color: #666;">10/03/2024</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Absences Section -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="card-title">Suivi des Absences</h3>
+                </div>
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Enfant</th>
+                            <th>Date</th>
+                            <th>Matière</th>
+                            <th>Justifiée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Karim Benali</td>
+                            <td>05/03/2024</td>
+                            <td>Éducation physique</td>
+                            <td style="color: #28a745;">Oui</td>
+                        </tr>
+                        <tr>
+                            <td>Sarah Benali</td>
+                            <td>28/02/2024</td>
+                            <td>Histoire-Géographie</td>
+                            <td style="color: #28a745;">Oui</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- PROCHAINS ÉVÉNEMENTS -->
+        <section class="dashboard-card">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3 class="card-title">Prochains Événements</h3>
+            </div>
+            <div style="margin-top: 1rem;">
+                <div class="event-item">
+                    <strong>Réunion parents-professeurs</strong><br>
+                    <small>22 Mars 2024 - 18h00 | Salle de conférence</small>
+                </div>
+                <div class="event-item warning">
+                    <strong>Sortie pédagogique - Musée</strong><br>
+                    <small>25 Mars 2024 - Toute la journée | Pensez au pique-nique</small>
+                </div>
+                <div class="event-item info">
+                    <strong>Vacances de printemps</strong><br>
+                    <small>01-15 Avril 2024 | Reprise des cours le 16 Avril</small>
+                </div>
+                <div class="event-item">
+                    <strong>Kermesse de l'école</strong><br>
+                    <small>05 Mai 2024 - 14h00-18h00 | Cour de l'école</small>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo-container">
+                    <img src="images/ge elites (2).png" alt="GROUPE SCOLAIRE GENERATION ELITES" class="footer-logo">
+                    <div>
+                        <h3>GROUPE SCOLAIRE GENERATION ELITES</h3>
+                        <p>Former les leaders de demain grâce à un enseignement d'excellence et des valeurs fortes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <a href="index.html">Accueil</a>
+                <a href="about.html">Notre École</a>
+                <a href="programs.html">Programmes</a>
+                <a href="admissions.html">Admissions</a>
+                <a href="activities.html">Activités</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Alger, Algérie</p>
+                <p><i class="fas fa-phone"></i> +213 XXX XX XX XX</p>
+                <p><i class="fas fa-envelope"></i> contact@generationelites.edu.dz</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 GROUPE SCOLAIRE GENERATION ELITES. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Portal menu interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.portal-menu a');
+            
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

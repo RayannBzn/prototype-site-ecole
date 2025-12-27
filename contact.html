@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - GROUPE SCOLAIRE GENERATION ELITES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url(images/ge\ elites\ \(2\).png);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* White overlay for readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.616);
+            z-index: -1;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, #0a2053 0%, rgba(44, 107, 184, 0.95) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0);
+            padding: 5px;
+        }
+
+        .school-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .school-motto {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Header Right Section */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Sign Up Button */
+        .signup-button {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #1a4a8f;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .signup-button:hover {
+            background: transparent;
+            color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Contact Info Styling */
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        /* MAC-STYLE DOCK NAVIGATION */
+        .mac-dock-nav {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .dock {
+            display: flex;
+            align-items: end;
+            background: rgba(255, 255, 255, 0.616);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 12px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            gap: 8px;
+        }
+
+        .dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            padding: 12px 8px;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            min-width: 80px;
+        }
+
+        .dock-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a2053, #2c6bb8);
+            border-radius: 14px;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(26, 74, 143, 0.3);
+            margin-bottom: 6px;
+        }
+
+        .dock-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a4a8f;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .dock-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .dock-item:hover .dock-icon {
+            transform: scale(1.15);
+            background: linear-gradient(135deg, #0a2053, #4a86e8);
+            box-shadow: 0 8px 25px rgba(26, 74, 143, 0.4);
+        }
+
+        .dock-item:hover .dock-label {
+            color: #2c6bb8;
+            font-weight: 700;
+        }
+
+        .dock-item.active .dock-icon {
+            background: linear-gradient(135deg, #fecc2f, #ffed4e);
+            color: #1a4a8f;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .dock-item.active .dock-label {
+            color: #1a4a8f;
+            font-weight: 700;
+        }
+
+        .dock:hover .dock-item:not(:hover) .dock-icon {
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+
+        /* Professional Fade Scale Transition */
+        .page-wrapper {
+            animation: fadeScale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes fadeScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.98) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* CONTACT PAGE SPECIFIC STYLES */
+        .contact-hero {
+            background: linear-gradient(135deg, #0a2053, rgba(44, 107, 184, 0.9));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin: 20px auto;
+            border-radius: 20px;
+            max-width: 1200px;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            background: #ffffff9d;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.356);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a4a8f;
+            font-size: 2.2rem;
+        }
+
+        /* Contact Layout */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: #ffffff00;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.582);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #2c6bb8;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #1a4a8f;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: #ffffff00;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.582);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: #1a4a8f;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            font-family: inherit;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: #2c6bb8;
+            outline: none;
+            background: white;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #0a2053, #2c6bb8);
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, #2c6bb8, #4a86e8);
+            transform: translateY(-2px);
+        }
+
+        /* Map Section */
+        .map-container {
+            background: #ffffff00;
+            padding: 0.2rem;
+            border-radius: 15px;
+            border: 8px solid #0a2053;
+            text-align: center;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #0a2053, #2c6bb8);
+            color: rgb(255, 255, 255);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2053, #2c6bb8);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        /* Footer Logo  */
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0);
+    padding: 3px;
+    align-self: flex-start; /* Aligns to top */
+}
+
+.footer-logo-container h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 0; /* Remove top margin */
+}
+
+.footer-logo-container p {
+    color: #ccc;
+    line-height: 1.5;
+    margin: 0;
+}
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 1rem;
+            }
+            
+            .header-right {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .contact-info {
+                text-align: center;
+            }
+            
+            .signup-button {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            
+            .dock {
+                padding: 10px 16px;
+                border-radius: 20px;
+            }
+            
+            .dock-item {
+                min-width: 60px;
+                padding: 8px 4px;
+            }
+            
+            .dock-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .dock-label {
+                font-size: 10px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-logo-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .footer-logo {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .footer-logo-container > div {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="images/ge elites (2).png" alt="GROUPE SCOLAIRE GENERATION ELITES" class="school-logo">
+                <div>
+                    <h1 class="school-name">GROUPE SCOLAIRE GÉNÉRATION ÉLITES </h1>
+                    <p class="school-motto">Former les leaders de demain</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> +213 XXX XX XX XX</p>
+                    <p><i class="fas fa-envelope"></i> contact@generationelites.edu.dz</p>
+                </div>
+                <a href="login.html" class="signup-button">
+                    <i class="fas fa-user-plus"></i>
+                    Espace Personnel
+                </a>
+            </div>
+        </div>
+    </header>
+
+   <!-- Navigation -->
+<nav class="mac-dock-nav">
+    <div class="dock">
+        <a href="index.html" class="dock-item">
+            <div class="dock-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <span class="dock-label">Accueil</span>
+        </a>
+        <a href="about.html" class="dock-item">
+            <div class="dock-icon">
+                <i class="fas fa-school"></i>
+            </div>
+            <span class="dock-label">Notre École</span>
+        </a>
+        <a href="programs.html" class="dock-item">
+            <div class="dock-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <span class="dock-label">Programmes</span>
+        </a>
+        <a href="activities.html" class="dock-item">
+            <div class="dock-icon">
+                <i class="fas fa-futbol"></i>
+            </div>
+            <span class="dock-label">Activités</span>
+        </a>
+        <a href="contact.html" class="dock-item active">
+            <div class="dock-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <span class="dock-label">Contact</span>
+        </a>
+    </div>
+</nav>
+
+    <!-- Contact Content with Animation -->
+    <main class="page-wrapper">
+        <!-- Contact Hero Section -->
+        <section class="contact-hero">
+            <div class="hero-content">
+                <h1>Contactez-nous</h1>
+                <p>Nous sommes là pour répondre à toutes vos questions</p>
+            </div>
+        </section>
+
+        <!-- Contact Info & Form Section -->
+        <section class="section">
+            <h2 class="section-title">Prendre Contact</h2>
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Notre Adresse</h3>
+                        <p>Lot N°34 Lotissement Elouz, extension Baba Hassen (kertala)<br>Alger, Algérie</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Téléphone</h3>
+                        <p>07 93 87 57 75<br>Dimanche - Jeudi : 8h00 - 17h00</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>groupescolaire.ge@gmail.com<br>gs.ge10.info@gmail.com</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">  
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h3 style="color: #1a4a8f; margin-bottom: 1.5rem; text-align: center;">Envoyez-nous un message</h3>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nom Complet *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Adresse Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Choisir un sujet</option>
+                                <option value="admission">Admission</option>
+                                <option value="information">Information générale</option>
+                                <option value="visite">Demande de visite</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Envoyer le Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+       <!-- Map Section -->
+<section class="section">
+    <h2 class="section-title">Nous Trouver</h2>
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3199.2214843090715!2d2.9762864763948937!3d36.693215273722146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128faf52c7481349%3A0x60290e8910ca98a0!2sGroupe%20scolaire%20G%C3%A9n%C3%A9ration%20%C3%89lites!5e0!3m2!1sfr!2sdz!4v1764510020824!5m2!1sfr!2sdz" 
+            width="100%" 
+            height="400" 
+            style="border:0; border-radius: 10px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo-container">
+                    <img src="images/ge elites (2).png" alt="GROUPE SCOLAIRE GENERATION ELITES" class="footer-logo">
+                    <div>
+                        <h3>GROUPE SCOLAIRE GENERATION ELITES</h3>
+                        <p>Former les leaders de demain grâce à un enseignement d'excellence et des valeurs fortes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <a href="index.html">Accueil</a>
+                <a href="about.html">Notre École</a>
+                <a href="programs.html">Programmes</a>
+                <a href="admissions.html">Admissions</a>
+                <a href="activities.html">Activités</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Alger, Algérie</p>
+                <p><i class="fas fa-phone"></i> +213 XXX XX XX XX</p>
+                <p><i class="fas fa-envelope"></i> contact@generationelites.edu.dz</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 GROUPE SCOLAIRE GENERATION ELITES. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Automatic active navigation highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const dockItems = document.querySelectorAll('.dock-item');
+            
+            dockItems.forEach(item => {
+                item.classList.remove('active');
+                const itemHref = item.getAttribute('href');
+                
+                if (itemHref === currentPage) {
+                    item.classList.add('active');
+                }
+                
+                if (currentPage === '' && itemHref === 'index.html') {
+                    item.classList.add('active');
+                }
+            });
+
+            // Contact form handling
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Merci pour votre message! Nous vous répondrons dans les plus brefs délais.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
